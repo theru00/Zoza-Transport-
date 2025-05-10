@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0a3d62;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow: hidden;
+    touch-action: none; /* Prevent default touch behaviors */
+}
+
+#game-container {
+    position: relative;
+    width: 90vw;
+    max-width: 800px;
+    aspect-ratio: 2 / 1;
+    margin: auto;
+}
+
+#pool-table {
+    background: #1e8449;
+    border: 5vw solid #5d4037;
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    touch-action: none;
+}
+
+#timer, #player-turn, #game-status, #foul-message {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: clamp(14px, 4vw, 18px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#timer { top: 2%; }
+#player-turn { top: 10%; }
+#game-status { top: 50%; transform: translate(-50%, -50%); font-size: clamp(18px, 5vw, 24px); display: none; }
+#foul-message { top: 18%; display: none; }
+
+.pocket {
+    position: absolute;
+    width: 7.5%;
+    aspect-ratio: 1;
+    background: #111;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.ball {
+    position: absolute;
+    width: 5%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    z-index: 5;
+    font-size: clamp(8px, 2vw, 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+#cue {
+    position: absolute;
+    width: 25%;
+    height: 1%;
+    background: linear-gradient(to right, #8B4513, #A0522D, #8B4513);
+    transform-origin: left center;
+    z-index: 3;
+    pointer-events: none;
+    display: none;
+}
+
+#shot-preview {
+    position: absolute;
+    width: 50%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    transform-origin: left center;
+    z-index: 2;
+    pointer-events: none;
+    display: none;
+}
+
+#power-meter {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 5%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+}
+
+#power-level {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+    transition: width 0.1s;
+}
+
+#settings-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+#settings-menu.hidden {
+    display: none;
+}
+
+#settings-button {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    background: #555;
+    border: none;
+    color: white;
+    font-size: clamp(16px, 5vw, 20px);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px;
+    font-size: clamp(14px, 4vw, 16px);
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+@media (max-width: 600px) {
+    #game-container {
+        width: 95vw;
+    }
+    #pool-table {
+        border: 4vw solid #5d4037;
+    }
+}
