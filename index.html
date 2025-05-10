@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>8-Ball Pool with AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="pool-table">
+            <!-- Pockets (rendered dynamically) -->
+            <div id="cue"></div>
+            <div id="shot-preview"></div>
+            <div id="timer">15</div>
+            <div id="player-turn">Your turn</div>
+            <div id="game-status"></div>
+            <div id="foul-message"></div>
+            <div id="power-meter">
+                <div id="power-level"></div>
+            </div>
+        </div>
+        <div id="settings-menu" class="hidden">
+            <h2>Settings</h2>
+            <label>AI Difficulty:
+                <select id="ai-difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </label>
+            <button id="restart-button">Restart Game</button>
+            <button id="close-settings">Close</button>
+        </div>
+        <button id="settings-button">⚙️</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+    <script type="module" src="game.js"></script>
+</body>
+</html>
